@@ -1,0 +1,95 @@
+@use "sass:math";
+
+// break point
+
+@mixin sm {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+
+// grid system
+
+$gutter-width: 16px;
+$grid-num: 12;
+
+.container {
+  width: 100%;
+  padding: 0 $gutter-width;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 (-(math.div($gutter-width, 2)));
+}
+
+%col {
+  padding: 0 (math.div($gutter-width, 2));
+}
+
+@for $i from 1 through $grid-num {
+  .col-#{$i} {
+    @extend %col;
+
+    width: 100% * (math.div($i, $grid-num));
+  }
+}
+
+@for $i from 1 through $grid-num {
+  .col-sm-#{$i} {
+    @extend %col;
+
+    @include sm {
+      width: 100% * (math.div($i, $grid-num));
+    }
+  }
+}
+
+@for $i from 1 through $grid-num {
+  .col-md-#{$i} {
+    @extend %col;
+
+    @include md {
+      width: 100% * (math.div($i, $grid-num));
+    }
+  }
+}
+
+@for $i from 1 through $grid-num {
+  .col-lg-#{$i} {
+    @extend %col;
+
+    @include lg {
+      width: 100% * (math.div($i, $grid-num));
+    }
+  }
+}
+
+@for $i from 1 through $grid-num {
+  .col-xl-#{$i} {
+    @extend %col;
+
+    @include xl {
+      width: 100% * (math.div($i, $grid-num));
+    }
+  }
+}
