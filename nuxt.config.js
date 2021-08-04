@@ -1,4 +1,10 @@
 export default {
+  target: 'static',
+
+  router: {
+    base: '/mrctech_test/'
+  },
+
   head: {
     title: 'mrctech_test',
     htmlAttrs: {
@@ -26,20 +32,13 @@ export default {
     '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
-  plugins: [
-    '~/plugins/fontawesome.js'
-  ],
+  plugins: ['~/plugins/fontawesome.js'],
 
   components: true,
 
-  buildModules: [
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/stylelint-module',
-  ],
+  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/stylelint-module'],
 
-  modules: [
-  ],
+  modules: [],
 
-  build: {
-  }
+  build: {}
 }
